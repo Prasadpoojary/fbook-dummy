@@ -1,0 +1,12 @@
+.profile img 
+{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+}
+
+.profile p 
+{
+    margin-top: 20px;
+    text-align: center;
+}
