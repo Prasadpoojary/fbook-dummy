@@ -1,0 +1,8 @@
+<div class="user">
+    <div class="details">
+        <img src="{{image}}" alt="">
+        <p>{{name}}</p>
+    </div>
+    <button (click)="sendRequest();" *ngIf="status!='Request Pending'">Send Request</button>
+    <h6 *ngIf="status=='Request Pending'">{{status}}</h6>
+</div>

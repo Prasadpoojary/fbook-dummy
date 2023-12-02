@@ -1,14 +1,14 @@
 
     <header>
         <h2>FBOOK</h2>
-        <nav>
+        <nav *ngIf="isAuthenticated">
             <a [routerLink]="['/']">Home</a>
             <a [routerLink]="['/network']">Network</a>
             <a [routerLink]="['/friends']">Friends</a>
             <a [routerLink]="['/settings']">Settings</a>
             <a href="">Logout</a>
         </nav>
-        <nav>
+        <nav *ngIf="!isAuthenticated">
              <a [routerLink]="['/register']">Register</a>
             <a [routerLink]="['/login']">Login</a>
         </nav>

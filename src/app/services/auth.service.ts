@@ -22,6 +22,12 @@ export class AuthService {
      return this._http.post(this.api+'users/authenticate',data);
   }
 
+
+  isAuthenticated()
+  {
+     return !!localStorage.getItem("token");
+  }
+
   //prasadpoojary145@gmail.com
   //Savithri143@
 

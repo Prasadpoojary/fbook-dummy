@@ -5,19 +5,6 @@
           <app-profile></app-profile>
         </div>
         <div class="col-two">
-           <div class="user">
-               <div class="details">
-                   <img src="carbon.png" alt="">
-                   <p>name</p>
-               </div>
-               <button>Send Request</button>
-           </div>
-           <div class="user">
-            <div class="details">
-                <img src="carbon.png" alt="">
-                <p>name</p>
-            </div>
-            <button>Send Request</button>
-        </div>
+           <app-friend *ngFor="let friend of friends" [friendId]="friend['friendId']"></app-friend>
         </div>
     </div>

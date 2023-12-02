@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent {
 
-  constructor(private _fb:FormBuilder,private _authService:AuthService){}
+  constructor(private _fb:FormBuilder,private _authService:AuthService, private _router:Router){}
 
   registerForm:FormGroup=this._fb.group({
     'firstName':[null,Validators.required],
@@ -27,11 +28,11 @@ export class RegisterComponent {
       this._authService.register(this.registerForm.value).subscribe(
         (data)=>
         {
-            console.log(data);
+            this._router.navigateByUrl("['/login']");
         },
         (error)=>
         {
-          console.log(error);
+            alert("Something went wrong...");
         }
       );
     }

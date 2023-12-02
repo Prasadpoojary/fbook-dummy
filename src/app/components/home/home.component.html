@@ -8,20 +8,17 @@
         </div>
         <div class="col-two">
             <div class="row-one">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea [(ngModel)]="postData" id="" cols="30" rows="10"></textarea>
                 <input type="file" name="" id="">
-                <button>Post</button>
+                <button (click)="addPost();">Post</button>
             </div>
             <div class="row-two">
                 <h3>Post</h3>
-                <div class="post">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas maiores, similique velit quisquam eligendi saepe assumenda eos reprehenderit culpa quaerat sapiente ipsam sed vel molestias obcaecati sequi accusantium quidem deleniti.</p>
-                    <p class="time">Dec 21, 2023</p>
+                <div class="post" *ngFor="let post of posts">
+                    <p>{{post?.post}}</p>
+                    <p class="time">{{post?.userName}} | {{post?.createdDate | date}}</p>
                 </div>
-                <div class="post">
-                    <img src="carbon.png" alt="">
-                    <p class="time">Dec 21, 2023</p>
-                </div>
+               
             </div>
         </div>
     </div>

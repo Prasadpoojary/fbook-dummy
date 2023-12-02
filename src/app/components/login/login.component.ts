@@ -1,5 +1,7 @@
+import { getLocaleMonthNames } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private _fb:FormBuilder,private _authService:AuthService){}
+  constructor(private _fb:FormBuilder,private _authService:AuthService, private _router:Router){}
 
   loginForm:FormGroup=this._fb.group({
     'email':[null,Validators.required],
@@ -22,11 +24,17 @@ export class LoginComponent {
       this._authService.login(this.loginForm.value).subscribe(
         (data)=>
         {
-            console.log(data);
+            let token=data["token"];
+            let id=data["_id"];
+
+            localStorage.setItem("token",token);
+            localStorage.setItem("id",id);
+            
+            this._router.navigateByUrl("/");
         },
         (error)=>
         {
-          console.log(error);
+            alert("Username or password is incorrect");
         }
       );
     }
