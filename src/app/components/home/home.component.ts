@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit{
 
-  constructor(private _userService:UserService){}
+  constructor(private _userService:UserService,private _router:Router){}
 
 
   posts:any[]=[];
@@ -38,7 +39,6 @@ export class HomeComponent implements OnInit{
       this._userService.getUser(userId).subscribe(
         (data:any)=>
         {
-          console.log(this.newPost?.isActive);
 
             this.newPost.isActive=data["isActive"];
             this.newPost.isAdmin=data["isAdmin"];
@@ -52,8 +52,8 @@ export class HomeComponent implements OnInit{
             this._userService.createPost(this.newPost).subscribe(
               (data)=>
               {
-                 console.log(data);
                  alert("Posted successfully");
+                 this.postData="";
               },
               (error)=>
               {
@@ -68,6 +68,11 @@ export class HomeComponent implements OnInit{
         }
       );
     }
+    else 
+    {
+      this._router.navigateByUrl("/login");
+    }
+    
   }
 
 

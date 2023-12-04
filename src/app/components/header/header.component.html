@@ -2,14 +2,15 @@
     <header>
         <h2>FBOOK</h2>
         <nav *ngIf="isAuthenticated">
-            <a [routerLink]="['/']">Home</a>
-            <a [routerLink]="['/network']">Network</a>
-            <a [routerLink]="['/friends']">Friends</a>
-            <a [routerLink]="['/settings']">Settings</a>
-            <a href="">Logout</a>
+            <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+            <a *ngIf="isAdmin" routerLinkActive="active" [routerLink]="['/users']">Users</a>
+            <a [routerLink]="['/network']" routerLinkActive="active">Network</a>
+            <a [routerLink]="['/friends']" routerLinkActive="active">Friends</a>
+            <a [routerLink]="['/settings']" routerLinkActive="active">Settings</a>
+            <a href="" (click)="logout();" routerLinkActive="active">Logout</a>
         </nav>
         <nav *ngIf="!isAuthenticated">
-             <a [routerLink]="['/register']">Register</a>
-            <a [routerLink]="['/login']">Login</a>
+             <a [routerLink]="['/register']" routerLinkActive="active">Register</a>
+            <a [routerLink]="['/login']" routerLinkActive="active">Login</a>
         </nav>
     </header>

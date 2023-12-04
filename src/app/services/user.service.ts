@@ -17,6 +17,11 @@ export class UserService {
       return this._http.get(`${this.api}users/${id}`);
   }
 
+  getUserByEmail(email:string):Observable<any>
+  {
+      return this._http.post(`${this.api}users/finduserbyemail`,{email:email});
+  }
+
   allPost():Observable<any>
   {
       return this._http.get(`${this.api}posts/`);
@@ -30,6 +35,11 @@ export class UserService {
   allFriends():Observable<any>
   {
       return this._http.get(`${this.api}friends`);
+  }
+
+  allUsers():Observable<any>
+  {
+      return this._http.get(`${this.api}users/`);
   }
   
   getPhoto(photoId:string):Observable<any>
@@ -45,5 +55,10 @@ export class UserService {
   createFriendRequest(data:any)
   {
     return this._http.post(`${this.api}friends/createrequest`,data);
+  }
+
+  updateUser(userid:string,data:any):Observable<any>
+  {
+    return this._http.put(`${this.api}users/${userid}`,data);
   }
 }

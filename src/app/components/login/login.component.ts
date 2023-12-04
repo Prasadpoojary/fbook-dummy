@@ -29,7 +29,7 @@ export class LoginComponent {
 
             localStorage.setItem("token",token);
             localStorage.setItem("id",id);
-            
+            this._authService.isAuthenticated.next(true);
             this._router.navigateByUrl("/");
         },
         (error)=>

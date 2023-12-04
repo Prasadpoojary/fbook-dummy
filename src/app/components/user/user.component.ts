@@ -3,14 +3,14 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-friends',
-  templateUrl: './friends.component.html',
-  styleUrls: ['./friends.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class FriendsComponent {
+export class UserComponent {
   constructor(private _userService:UserService,private _router:Router){}
 
-  friends:any[]=[];
+  users:any[]=[];
 
   action:boolean=false;
 
@@ -19,14 +19,14 @@ ngOnInit(): void {
   let userID=localStorage.getItem("id");
   if(userID)
   {
-    this._userService.allFriends().subscribe(
+    this._userService.allUsers().subscribe(
       (data:any[])=>
       {
-          this.friends=data.filter(f => f['userId']==userID);
+          this.users=data;
       },
       (error)=>
       {
-        alert("Unable to load network");
+        alert("Unable to load users");
         console.log(error);
       }
     );
@@ -39,5 +39,4 @@ else
  
 
 }
-
 }

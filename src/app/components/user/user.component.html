@@ -1,0 +1,10 @@
+
+
+<div class="container">
+    <div class="col-one">
+       <app-profile></app-profile>
+    </div>
+    <div class="col-two">
+        <app-friend *ngFor="let user of users" [action]="action" [friendId]="user['_id']"></app-friend>
+    </div>
+</div>

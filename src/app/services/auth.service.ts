@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http:HttpClient) { 
+        this.isAuthenticated.next(!!localStorage.getItem("token"));
+   }
 
   api:string='http://3.17.216.66:3000/';
+
+  public isAuthenticated:BehaviorSubject<boolean>=new BehaviorSubject(false);
+
 
   register(user:User):Observable<any>
   {
@@ -23,10 +28,7 @@ export class AuthService {
   }
 
 
-  isAuthenticated()
-  {
-     return !!localStorage.getItem("token");
-  }
+ 
 
   //prasadpoojary145@gmail.com
   //Savithri143@

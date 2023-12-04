@@ -28,7 +28,7 @@ export class RegisterComponent {
       this._authService.register(this.registerForm.value).subscribe(
         (data)=>
         {
-            this._router.navigateByUrl("['/login']");
+            this._router.navigateByUrl("/login");
         },
         (error)=>
         {

@@ -17,6 +17,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { FriendComponent } from './components/friend/friend.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FriendComponent } from './components/friend/friend.component';
     SettingsComponent,
     HeaderComponent,
     ProfileComponent,
-    FriendComponent
+    FriendComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

@@ -8,19 +8,30 @@ import { RegisterComponent } from './components/register/register.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { NetworkComponent } from './components/network/network.component';
+import { UserComponent } from './components/user/user.component';
+import { AuthGuard } from './helper/AuthGuard';
+import { AuthGuardAdmin } from './helper/AuthGuardAdmin';
 
 const routes: Routes = [
+  {
+    path:'',
+    redirectTo:'home',
+    pathMatch:'full'
+  }
+  ,
   {
     path : 'forgot',
     component:ForgotPasswordComponent
   },
   {
     path : 'friends',
-    component:FriendsComponent
+    component:FriendsComponent,
+    canActivate:[AuthGuard]
   },
   {
-    path : '',
-    component:HomeComponent
+    path : 'home',
+    component:HomeComponent,
+    canActivate:[AuthGuard]
   },
   {
     path : 'login',
@@ -31,16 +42,23 @@ const routes: Routes = [
     component:RegisterComponent
   },
   {
-    path : 'reset',
+    path : 'reset/:id',
     component:ResetPasswordComponent
   },
   {
     path : 'settings',
-    component:SettingsComponent
+    component:SettingsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path : 'network',
-    component:NetworkComponent
+    component:NetworkComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path : 'users',
+    component:UserComponent,
+    canActivate:[AuthGuardAdmin]
   },
 ];
 

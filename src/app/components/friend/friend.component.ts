@@ -14,6 +14,10 @@ export class FriendComponent implements OnInit {
   @Input()
   friendId!:string;
 
+  @Input()
+  action:boolean=false;
+
+
   name!:string;
   image!:string;
   status!:string;
@@ -23,7 +27,6 @@ export class FriendComponent implements OnInit {
     this._userService.getUser(this.friendId).subscribe(
       (data)=>
       {
-        console.log(data);
         this.name=data["firstName"]+" "+data["lastName"];
          this._userService.getPhoto(data['photoId']).subscribe(
           (imageData)=>

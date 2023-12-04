@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,9 +9,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NetworkComponent implements OnInit {
 
-  constructor(private _userService:UserService){}
+  constructor(private _userService:UserService,private _router:Router){}
 
   friends:any[]=[];
+  action:boolean=true;
+
 
 ngOnInit(): void {
   
@@ -28,6 +31,10 @@ ngOnInit(): void {
         console.log(error);
       }
     );
+}
+else 
+{
+  this._router.navigateByUrl("/login");
 }
  
 
